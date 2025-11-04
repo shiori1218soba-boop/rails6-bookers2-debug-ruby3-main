@@ -14,8 +14,13 @@ class BookCommentsController < ApplicationController
       flash.now[:alert] = "コメントを入力してください。"
       render 'books/show'
     end
-
   end
+
+  def destroy
+    BookComment.find(params[:id]).destroy
+    redirect_to book_path(params[:book_id])
+  end
+
 
   private
 
